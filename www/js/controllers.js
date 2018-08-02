@@ -142,7 +142,7 @@ angular.module('app.controllers', [])
 		$scope.user = {};
 		
 		$scope.login = function() {
-			str="http://www.yourwebsite.com/foodkart/user-details.php?e="+$scope.user.email+"&p="+$scope.user.password;
+			str="http://www.yourwebsite.com/foodkart/user-details.php?e="+$scope.user.name+"&p="+$scope.user.password;
 			$http.get(str)
 			.success(function (response){
 				$scope.user_details = response.records;
@@ -159,10 +159,10 @@ angular.module('app.controllers', [])
 				lastView = $ionicHistory.backView();
 				console.log('Last View',lastView);
 				//BUG to be fixed soon
-				/*if(lastView.stateId=="checkOut"){ $state.go('checkOut', {}, {location: "replace", reload: true}); }
-				else{*/
+				if(lastView.stateId=="checkOut"){ $state.go('checkOut', {}, {location: "replace", reload: true}); }
+				else{
 		        	$state.go('profile', {}, {location: "replace", reload: true});
-				//}
+				}
 				
 			}).error(function() {
 					var alertPopup = $ionicPopup.alert({
